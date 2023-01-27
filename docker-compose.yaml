@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  zemoga-mobile-react-dev-test:
+    build: ./zemoga-mobile-react-dev-test
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./zemoga-mobile-react-dev-test:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - zemoga_mobile_react_dev_test_net
+    environment:
+      - CI=true
+      - WATCHPACK_POLLING=true
+networks:
+  zemoga_mobile_react_dev_test_net:
