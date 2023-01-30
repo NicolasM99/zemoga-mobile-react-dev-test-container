@@ -4,13 +4,17 @@ services:
   zemoga-mobile-react-dev-test:
     build: ./zemoga-mobile-react-dev-test
     ports:
-      - "3000:3000"
+      - "19000:19000"
+      - "19006:19006"
+      - "19001:19001"
+      - "19002:19002"
     volumes:
       - ./zemoga-mobile-react-dev-test:/usr/src/app
       - /usr/src/app/node_modules
     networks:
       - zemoga_mobile_react_dev_test_net
     environment:
+      - EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0
       - CI=true
       - WATCHPACK_POLLING=true
 networks:
