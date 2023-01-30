@@ -14,8 +14,13 @@ services:
     networks:
       - zemoga_mobile_react_dev_test_net
     environment:
-      - EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0
+      - NODE_ENV=dev
+      - EXPO_DEV_TOOLS_LISTEN=0.0.0.0
       - CI=true
+      - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true
+      - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.0.3
+      - WDS_SOCKET_HOST=127.0.0.1
 networks:
   zemoga_mobile_react_dev_test_net:
+  
