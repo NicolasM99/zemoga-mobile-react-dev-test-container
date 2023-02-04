@@ -1,6 +1,14 @@
 {
+  "exclude": ["node_modules", "build"],
+  "include": ["src"],
   "extends": "expo/tsconfig.base",
+  "compileOnSave": true,
   "compilerOptions": {
-    "strict": true
+    "importHelpers": true,
+    "strict": true,
+    "paths": {
+      "src/*": ["src/*"]
+    },
+    "baseUrl": "."
   }
 }

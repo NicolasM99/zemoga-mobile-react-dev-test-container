@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:16-alpine
 
 EXPOSE 19000 19001 19002 19006
 
