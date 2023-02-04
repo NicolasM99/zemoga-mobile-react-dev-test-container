@@ -11,7 +11,7 @@ const AppNavigator: FC = () => (
   <NavigationContainer>
     <Stack.Navigator>
       {stacks.map((stack: any) => (
-        <Stack.Screen {...stack} />
+        <Stack.Screen key={stack.name} {...stack} />
       ))}
     </Stack.Navigator>
   </NavigationContainer>

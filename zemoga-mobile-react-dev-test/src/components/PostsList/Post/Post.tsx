@@ -1,19 +1,32 @@
 import React, { FC } from 'react';
 
-import { GestureResponderEvent, Text, TouchableOpacity } from 'react-native';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import {
+  GestureResponderEvent,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View
+} from 'react-native';
 
+import PostFavouriteIcon, { PostFavouriteIconProps } from './PostFavouriteIcon';
+import PostTitle, { PostTitleProps } from './PostTitle';
 import { postStyles } from './Styles';
 
-type PostProps = {
+interface PostProps {
   onPressPost?: (event: GestureResponderEvent) => void;
-};
+  onSetFavourite?: PostFavouriteIconProps['onSetFavourite'];
+  isFavourite?: PostFavouriteIconProps['isFavourite'];
+}
 
-const Post: FC<PostProps> = ({ onPressPost }) => {
+const Post: FC<PostProps> = ({ onPressPost, onSetFavourite, isFavourite = false }) => {
   return (
-    <TouchableOpacity onPress={onPressPost} style={postStyles.postContainer}>
-      <Text>ICON</Text>
-      <Text>qui est esse</Text>
-    </TouchableOpacity>
+    <TouchableWithoutFeedback onPress={onPressPost}>
+      <View style={postStyles.postContainer}>
+        <PostTitle>qui est esse</PostTitle>
+        <PostFavouriteIcon onSetFavourite={onSetFavourite} isFavourite={isFavourite} />
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

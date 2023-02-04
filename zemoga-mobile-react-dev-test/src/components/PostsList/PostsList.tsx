@@ -10,8 +10,11 @@ import { StackParamList } from 'src/navigation/Stacks';
 import Post from './Post/Post';
 import { postsListStyles } from './Styles';
 
+const mockedPosts = [{ postId: '1' }, { postId: '2' }, { postId: '3' }];
+
 const PostsList: FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
+
   return (
     <View style={postsListStyles.postsListContainer}>
       <Post onPressPost={() => navigation.navigate(POST_DETAILS, { postId: '1' })} />

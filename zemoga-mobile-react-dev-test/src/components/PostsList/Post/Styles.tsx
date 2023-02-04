@@ -2,14 +2,16 @@ import { StyleSheet } from 'react-native';
 
 export const postStyles = StyleSheet.create({
   postContainer: {
-    // flex: 1,
     flexDirection: 'row',
     width: 'auto',
     padding: 20,
-    // justifyContent: "center",
+    justifyContent: 'space-between',
     alignItems: 'center',
     borderBottomColor: 'black',
     borderBottomWidth: 3,
     backgroundColor: 'gray'
+  },
+  postTitle: {
+    fontSize: 16
   }
 });
