@@ -15,7 +15,7 @@ const PostFavouriteIcon: FC<PostFavouriteIconProps> = ({
   return (
     <TouchableOpacity onPress={onSetFavourite}>
       <View style={{ flex: 1 }}>
-        <FontAwesome name={isFavourite ? 'star' : 'star-o'} size={16} />
+        <FontAwesome color={!isFavourite ? 'rgba(0,0,0, 0.2)' : 'orange'} name="star" size={20} />
       </View>
     </TouchableOpacity>
   );

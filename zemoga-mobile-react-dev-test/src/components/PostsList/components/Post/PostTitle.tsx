@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Text, TouchableWithoutFeedback } from 'react-native';
+import { Text, TouchableWithoutFeedback, View } from 'react-native';
 
 import { postStyles } from './Styles';
 
@@ -9,9 +9,9 @@ export interface PostTitleProps {
 }
 
 const PostTitle: FC<PostTitleProps> = ({ children }: PostTitleProps) => (
-  <TouchableWithoutFeedback>
+  <View style={{ flex: 1 }}>
     <Text style={postStyles.postTitle}>{children}</Text>
-  </TouchableWithoutFeedback>
+  </View>
 );
 
 export default PostTitle;

@@ -4,6 +4,8 @@ export const postsScreenStyles = StyleSheet.create({
   postsScreenContainer: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    position: 'relative',
+    height: '100%'
   }
 });
