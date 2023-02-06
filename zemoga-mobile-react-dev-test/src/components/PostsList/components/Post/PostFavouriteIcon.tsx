@@ -6,16 +6,19 @@ import { GestureResponderEvent, TouchableOpacity, View } from 'react-native';
 export interface PostFavouriteIconProps {
   onSetFavourite?: (event: GestureResponderEvent) => void;
   isFavourite?: boolean;
+  isReadOnly?: boolean;
 }
 
 const PostFavouriteIcon: FC<PostFavouriteIconProps> = ({
   onSetFavourite,
-  isFavourite = false
+  isFavourite = false,
+  isReadOnly = false
 }: PostFavouriteIconProps) => {
+  if (isReadOnly && !isFavourite) return <></>;
   return (
-    <TouchableOpacity onPress={onSetFavourite}>
+    <TouchableOpacity onPress={(e) => (isReadOnly ? null : onSetFavourite?.(e))}>
       <View style={{ flex: 1 }}>
-        <FontAwesome color={!isFavourite ? 'rgba(0,0,0, 0.2)' : 'orange'} name="star" size={20} />
+        <FontAwesome color={!isFavourite ? 'rgba(0,0,0, 0.2)' : 'orange'} name="star" size={24} />
       </View>
     </TouchableOpacity>
   );

@@ -8,19 +8,28 @@ const Button: FC<IButton> = ({
   variant = 'primary',
   style,
   outlined = false,
-  rounded = true
+  rounded = true,
+  onPress
 }: IButton) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View
         style={{
           ...buttonStyles.container,
           ...buttonStyles[variant],
           ...(rounded && buttonStyles.rounded),
+          ...(outlined && buttonStyles[`outlined_${variant}`]),
           ...style
         }}
       >
-        <Text style={{ ...buttonStyles.title }}>{title}</Text>
+        <Text
+          style={{
+            ...buttonStyles.title,
+            ...(outlined && buttonStyles[`titleOutlined_${variant}`])
+          }}
+        >
+          {title}
+        </Text>
       </View>
     </TouchableOpacity>
   );

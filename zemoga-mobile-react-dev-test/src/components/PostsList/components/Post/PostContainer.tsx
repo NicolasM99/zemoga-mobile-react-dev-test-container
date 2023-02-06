@@ -16,9 +16,9 @@ export interface PostContainerProps {
 
 const PostContainer: FC<PostContainerProps> = ({ onPressPost, children }: PostContainerProps) => {
   return (
-    <TouchableWithoutFeedback onPress={onPressPost}>
+    <TouchableOpacity onPress={onPressPost}>
       <View style={postStyles.postContainer}>{children}</View>
-    </TouchableWithoutFeedback>
+    </TouchableOpacity>
   );
 };
 

@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { ScrollView } from 'react-native';
+import { ScrollView, View, Alert } from 'react-native';
 
 import { POST_DETAILS } from 'src/navigation/routes';
 import { StackParamList } from 'src/navigation/Stacks';
@@ -14,9 +14,9 @@ import { PostsListProvider, usePostsListContext } from './context/PostsListConte
 import DeletePostsBtn from './components/DeletePostsBtn/DeletePostsBtn';
 import { IPost, PostsListContextType } from './@types/postListContext';
 import { useEffect } from 'react';
+import DeleteUnfavouritePostsBtn from './components/DeleteUnfavouritePostsBtn/DeleteUnfavouritePostsBtn';
 
 const PostsList: FC = () => {
-  // const [posts, setPosts] = useState([...mockedPosts]);
   const { isDeletingItems, posts, setPosts, postsToDelete, setPostsToDelete } =
     usePostsListContext() as PostsListContextType;
   const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>(); //!TODO: USE HANDLERS
@@ -30,6 +30,19 @@ const PostsList: FC = () => {
     }
     setPosts((currentPosts: IPost[]) => handleSelectPost([...currentPosts], index, isSelected));
   };
+  const handleDeletePosts = () =>
+    Alert.alert(
+      'Delete posts',
+      'Are you sure you want to delete N posts? THIS ACTION IS NOT REVERSIBLE',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => {},
+          style: 'cancel'
+        },
+        { text: 'OK', onPress: () => {} }
+      ]
+    );
   return (
     <>
       <ScrollView style={postsListStyles.postsListContainer}>
@@ -47,7 +60,12 @@ const PostsList: FC = () => {
           />
         ))}
       </ScrollView>
-      {isDeletingItems && postsToDelete.length > 0 && <DeletePostsBtn />}
+      {isDeletingItems && (
+        <View style={{ width: '100%', bottom: 0, position: 'absolute' }}>
+          {postsToDelete.length > 0 && <DeletePostsBtn onPress={handleDeletePosts} />}
+          <DeleteUnfavouritePostsBtn onPress={handleDeletePosts} />
+        </View>
+      )}
     </>
   );
 };

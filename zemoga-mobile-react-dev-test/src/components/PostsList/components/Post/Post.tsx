@@ -18,9 +18,11 @@ const Post: FC<PostProps> = ({
     <PostContainer onPressPost={onPressPost}>
       {isDeletingItems && <PostSelectBtn isSelected={isSelected} />}
       <PostTitle>{title}</PostTitle>
-      {!isDeletingItems && (
-        <PostFavouriteIcon onSetFavourite={onSetFavourite} isFavourite={isFavourite} />
-      )}
+      <PostFavouriteIcon
+        isReadOnly={isDeletingItems}
+        onSetFavourite={onSetFavourite}
+        isFavourite={isFavourite}
+      />
     </PostContainer>
   );
 };
