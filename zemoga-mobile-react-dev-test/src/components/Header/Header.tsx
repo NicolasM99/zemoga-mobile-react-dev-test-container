@@ -1,15 +1,18 @@
 import React, { FC } from 'react';
+
 import { Text } from 'react-native';
+
 import { IHeader } from './@types/header';
 import { fontSizes, headerStyles } from './Styles';
 
-const Header: FC<IHeader> = ({ children, bold = true, variant = 'h1' }: IHeader) => {
+const Header: FC<IHeader> = ({ children, bold = true, variant = 'h1', style = {} }: IHeader) => {
   return (
     <Text
       style={{
         fontSize: fontSizes[variant],
         fontWeight: bold ? 'bold' : 'normal',
-        ...headerStyles.font
+        ...headerStyles.font,
+        ...style
       }}
     >
       {children}

@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
+
 import { Text, TouchableOpacity, View } from 'react-native';
+
 import { IButton } from './@types/button';
 import { buttonStyles } from './Styles';
 

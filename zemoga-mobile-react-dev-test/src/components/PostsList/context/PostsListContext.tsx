@@ -1,4 +1,5 @@
 import React, { FC, useState, createContext, useContext } from 'react';
+
 import { PostsListProviderProps, PostsListContextType, IPost } from '../@types/postListContext';
 
 const PostsListContext = createContext<PostsListContextType | null>(null);

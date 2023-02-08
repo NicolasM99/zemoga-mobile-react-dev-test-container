@@ -1,11 +1,6 @@
 import React, { FC } from 'react';
 
-import {
-  GestureResponderEvent,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View
-} from 'react-native';
+import { GestureResponderEvent, TouchableOpacity, View } from 'react-native';
 
 import { postStyles } from './Styles';
 

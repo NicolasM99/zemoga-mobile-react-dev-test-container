@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { COLORS } from 'src/constants/theme/colors';
+
 const BORDER_WIDTH = 2;
 
 export const buttonStyles = StyleSheet.create({
@@ -16,7 +18,7 @@ export const buttonStyles = StyleSheet.create({
     color: 'white'
   },
   primary: {
-    backgroundColor: 'blue'
+    backgroundColor: COLORS.primary
   },
   secondary: {
     backgroundColor: 'green'
@@ -25,7 +27,7 @@ export const buttonStyles = StyleSheet.create({
   outlined_primary: {
     backgroundColor: 'white',
     borderWidth: BORDER_WIDTH,
-    borderColor: 'blue'
+    borderColor: COLORS.primary
   },
   outlined_secondary: {
     backgroundColor: 'white',
@@ -38,7 +40,7 @@ export const buttonStyles = StyleSheet.create({
     borderColor: 'red'
   },
   titleOutlined_primary: {
-    color: 'blue'
+    color: COLORS.primary
   },
   titleOutlined_secondary: {
     color: 'green'

@@ -11,7 +11,6 @@ export const fontSizes = {
 
 export const headerStyles = StyleSheet.create({
   font: {
-    marginTop: 16,
     marginBottom: 16
   }
 });

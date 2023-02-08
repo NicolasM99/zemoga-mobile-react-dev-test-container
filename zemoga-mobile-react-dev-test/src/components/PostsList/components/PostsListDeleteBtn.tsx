@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
-import { PostsListContextType } from '../@types/postListContext';
-import { usePostsListContext } from '../context/PostsListContext';
+
+import { COLORS } from 'src/constants/theme/colors';
 
 import PostActionBtn from './PostActionBtn';
+import { PostsListContextType } from '../@types/postListContext';
+import { usePostsListContext } from '../context/PostsListContext';
 
 const PostsListDeleteBtn: FC = () => {
   const { setIsDeletingItems, isDeletingItems } = usePostsListContext() as PostsListContextType;
@@ -11,9 +13,9 @@ const PostsListDeleteBtn: FC = () => {
   };
   return (
     <PostActionBtn
-      name={isDeletingItems ? 'close' : 'trash'}
+      name={isDeletingItems ? 'times' : 'trash'}
       onPress={() => handleIsDelitingItems()}
-      color="red"
+      color={COLORS.primary}
     />
   );
 };

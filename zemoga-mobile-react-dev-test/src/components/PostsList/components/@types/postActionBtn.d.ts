@@ -1,7 +1,7 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 export interface IPostActionBtn {
-  name: keyof typeof FontAwesome.glyphMap;
+  name: keyof typeof FontAwesome5.glyphMap | string;
   onPress: () => void;
   color?: string;
 }

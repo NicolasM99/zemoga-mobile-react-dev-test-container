@@ -1,4 +1,4 @@
-export const objectToList: any = (objectData: object, level: number = 0, parent = []) => {
+export const objectToList: any = (objectData: object, level = 0, parent = []) => {
   const objectList = [...parent, ...Object.entries({ ...objectData })];
   const list = objectList.map((item: any) => {
     const key = item[0];
@@ -12,7 +12,7 @@ export const objectToList: any = (objectData: object, level: number = 0, parent 
       level
     };
   });
-  let newList: any = [];
+  const newList: any = [];
   list.forEach((item) => {
     if (item.length) {
       item.forEach((child: any) => {

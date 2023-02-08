@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 
 import { routeHeaderStyles } from './Styles';
 

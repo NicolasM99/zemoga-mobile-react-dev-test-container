@@ -1,14 +1,18 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useRef } from 'react';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
-import { StackParamList } from 'src/navigation/Stacks';
-import { screenContainer } from './ScreenStyles';
+import { ModalRefType } from 'src/components/CommentsSection/@types/commentsSection';
+import CommentsSection from 'src/components/CommentsSection/CommentsSection';
 import Header from 'src/components/Header/Header';
-import Small from 'src/components/Small/Small';
-import Paragraph from 'src/components/Paragraph/Paragraph';
+import IconFloatingButton from 'src/components/IconFloatingButton/IconFloatingButton';
 import ObjectList from 'src/components/ObjectList/ObjectList';
+import Paragraph from 'src/components/Paragraph/Paragraph';
+import Small from 'src/components/Small/Small';
+import { StackParamList } from 'src/navigation/Stacks';
+
+import { screenContainer } from './ScreenStyles';
 
 export type PostDetailScreenProps = NativeStackScreenProps<StackParamList, 'PostDetails'>;
 
@@ -38,11 +42,16 @@ const mockedUser = {
 
 const PostDetailsScreen: FC<PostDetailScreenProps> = ({ route }: PostDetailScreenProps) => {
   const { postId, body, title, userId } = route.params;
+  const modalRef = useRef<ModalRefType>(null); // !todo change to correct type
+
+  const handleOpenComments = () => {
+    modalRef.current?.openModal();
+  };
 
   const PostInfo = () => (
     <View>
       <Header>{title}</Header>
-      <Small>{mockedUser.username}</Small>
+      <Small>Posted by "{mockedUser.username}"</Small>
       <Paragraph>{body}</Paragraph>
     </View>
   );
@@ -53,11 +62,16 @@ const PostDetailsScreen: FC<PostDetailScreenProps> = ({ route }: PostDetailScree
       <ObjectList objectData={mockedUser} />
     </View>
   );
+
   return (
-    <ScrollView style={screenContainer.container}>
-      <PostInfo />
-      <AuthorInfo />
-    </ScrollView>
+    <>
+      <ScrollView style={screenContainer.container}>
+        <PostInfo />
+        <AuthorInfo />
+      </ScrollView>
+      <IconFloatingButton onPress={() => handleOpenComments()} icon="comment" />
+      <CommentsSection comments={[]} modalRef={modalRef} />
+    </>
   );
 };
 

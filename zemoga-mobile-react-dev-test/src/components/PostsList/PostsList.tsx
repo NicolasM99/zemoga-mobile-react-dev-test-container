@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -7,14 +7,13 @@ import { ScrollView, View, Alert } from 'react-native';
 import { POST_DETAILS } from 'src/navigation/routes';
 import { StackParamList } from 'src/navigation/Stacks';
 
+import { IPost, PostsListContextType } from './@types/postListContext';
+import DeletePostsBtn from './components/DeletePostsBtn/DeletePostsBtn';
+import DeleteUnfavouritePostsBtn from './components/DeleteUnfavouritePostsBtn/DeleteUnfavouritePostsBtn';
+import Post from './components/Post/Post';
+import { usePostsListContext } from './context/PostsListContext';
 import { postsListStyles } from './Styles';
 import { handleSelectPost, handleSetFavouritePost } from './util/postListHandlers';
-import Post from './components/Post/Post';
-import { PostsListProvider, usePostsListContext } from './context/PostsListContext';
-import DeletePostsBtn from './components/DeletePostsBtn/DeletePostsBtn';
-import { IPost, PostsListContextType } from './@types/postListContext';
-import { useEffect } from 'react';
-import DeleteUnfavouritePostsBtn from './components/DeleteUnfavouritePostsBtn/DeleteUnfavouritePostsBtn';
 
 const PostsList: FC = () => {
   const { isDeletingItems, posts, setPosts, postsToDelete, setPostsToDelete } =
@@ -22,6 +21,7 @@ const PostsList: FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>(); //!TODO: USE HANDLERS
   useEffect(() => {
     if (isDeletingItems) setPostsToDelete([...posts].filter((post) => post.isSelected));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [posts]);
   const handlePressPost = (post: IPost, index: number, isSelected: boolean) => {
     if (!isDeletingItems) {
