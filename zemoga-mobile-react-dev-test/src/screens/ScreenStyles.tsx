@@ -9,3 +9,11 @@ export const postsScreenStyles = StyleSheet.create({
     height: '100%'
   }
 });
+
+export const screenContainer = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: 'white'
+  }
+});

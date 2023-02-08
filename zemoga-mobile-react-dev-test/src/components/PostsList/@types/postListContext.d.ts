@@ -2,10 +2,11 @@ import React from 'react';
 
 export interface IPost {
   postId: string;
-  title?: string;
-  body?: string;
+  title: string;
+  body: string;
   isFavourite?: boolean;
   isSelected?: boolean;
+  userId: string;
 }
 
 export type PostsListContextType = {

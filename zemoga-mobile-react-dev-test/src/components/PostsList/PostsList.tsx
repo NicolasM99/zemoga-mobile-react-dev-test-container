@@ -23,9 +23,9 @@ const PostsList: FC = () => {
   useEffect(() => {
     if (isDeletingItems) setPostsToDelete([...posts].filter((post) => post.isSelected));
   }, [posts]);
-  const handlePressPost = (postId: string, index: number, isSelected: boolean) => {
+  const handlePressPost = (post: IPost, index: number, isSelected: boolean) => {
     if (!isDeletingItems) {
-      navigation.navigate(POST_DETAILS, { postId });
+      navigation.navigate(POST_DETAILS, post);
       return;
     }
     setPosts((currentPosts: IPost[]) => handleSelectPost([...currentPosts], index, isSelected));
@@ -46,11 +46,11 @@ const PostsList: FC = () => {
   return (
     <>
       <ScrollView style={postsListStyles.postsListContainer}>
-        {posts.map(({ postId, isFavourite, isSelected }: any, index) => (
+        {posts.map(({ postId, title, isFavourite, isSelected, ...rest }: any, index) => (
           <Post
-            title={postId}
+            title={title}
             key={postId}
-            onPressPost={() => handlePressPost(postId, index, isSelected)}
+            onPressPost={() => handlePressPost({ postId, title, ...rest }, index, isSelected)}
             isFavourite={isFavourite}
             onSetFavourite={() =>
               setPosts((currentPosts: IPost[]) => handleSetFavouritePost([...currentPosts], index))
