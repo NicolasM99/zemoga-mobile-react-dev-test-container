@@ -1,28 +1,46 @@
-import React, { FC, useState, createContext, useContext } from 'react';
+import React, { FC, useState, createContext, useContext, useEffect } from 'react';
+
+import { generalAction } from 'src/redux/actions';
+import { GET_POSTS } from 'src/redux/actionTypes';
+import { useRedux } from 'src/redux/hooks/useRedux';
+import { POSTS_API } from 'src/redux/paths';
 
 import { PostsListProviderProps, PostsListContextType, IPost } from '../@types/postListContext';
 
 const PostsListContext = createContext<PostsListContextType | null>(null);
 
-export const mockedPosts: IPost[] = [
-  { postId: '1', title: 'testing title 1', body: 'testing body 1', userId: '1' },
-  { postId: '2', title: 'testing title 2', body: 'testing body 2', userId: '2' },
-  { postId: '3', title: 'testing title 3', body: 'testing body 3', userId: '3' },
-  { postId: '4', title: 'testing title 4', body: 'testing body 4', userId: '4' },
-  { postId: '5', title: 'testing title 5', body: 'testing body 5', userId: '5' }
-];
-
 const PostsListProvider: FC<PostsListProviderProps> = ({ children }: PostsListProviderProps) => {
-  const [posts, setPosts] = useState<IPost[] | []>([...mockedPosts]);
+  const [posts, setPosts] = useState<IPost[] | []>([]);
   const [postsToDelete, setPostsToDelete] = useState<IPost[] | []>([]);
   const [isDeletingItems, setIsDeletingItems] = useState(false);
+  const [dispatch, { posts: postsStore }, status] = useRedux(['posts']);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (postsStore) setPosts([...postsStore]);
+  }, [postsStore]);
+
+  useEffect(() => {
+    if (status) setIsLoading(false);
+  }, [status]);
+
+  useEffect(() => {
+    if (isLoading) setIsLoading(false);
+  }, [isLoading]);
+
+  useEffect(() => {
+    dispatch(generalAction({ actionType: GET_POSTS, api: POSTS_API }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const valueObj = {
     posts,
     setPosts,
     isDeletingItems,
     setIsDeletingItems,
     postsToDelete,
-    setPostsToDelete
+    setPostsToDelete,
+    isLoading,
+    setIsLoading
   };
   return <PostsListContext.Provider value={valueObj}>{children}</PostsListContext.Provider>;
 };

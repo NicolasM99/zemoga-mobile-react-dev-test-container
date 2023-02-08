@@ -6,6 +6,7 @@ import { ScrollView, View, Alert } from 'react-native';
 
 import { POST_DETAILS } from 'src/navigation/routes';
 import { StackParamList } from 'src/navigation/Stacks';
+import { IPostStore } from 'src/redux/@types/postStore';
 
 import { IPost, PostsListContextType } from './@types/postListContext';
 import DeletePostsBtn from './components/DeletePostsBtn/DeletePostsBtn';
@@ -14,18 +15,19 @@ import Post from './components/Post/Post';
 import { usePostsListContext } from './context/PostsListContext';
 import { postsListStyles } from './Styles';
 import { handleSelectPost, handleSetFavouritePost } from './util/postListHandlers';
+import LoadingScreen from '../LoadingScreen/LoadingScreen';
 
 const PostsList: FC = () => {
-  const { isDeletingItems, posts, setPosts, postsToDelete, setPostsToDelete } =
+  const { isDeletingItems, posts, setPosts, postsToDelete, setPostsToDelete, isLoading } =
     usePostsListContext() as PostsListContextType;
   const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>(); //!TODO: USE HANDLERS
   useEffect(() => {
     if (isDeletingItems) setPostsToDelete([...posts].filter((post) => post.isSelected));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [posts]);
-  const handlePressPost = (post: IPost, index: number, isSelected: boolean) => {
+  const handlePressPost = (post: IPostStore, index: number, isSelected: boolean) => {
     if (!isDeletingItems) {
-      navigation.navigate(POST_DETAILS, post);
+      navigation.navigate(POST_DETAILS, { ...post, postId: post.id });
       return;
     }
     setPosts((currentPosts: IPost[]) => handleSelectPost([...currentPosts], index, isSelected));
@@ -43,14 +45,15 @@ const PostsList: FC = () => {
         { text: 'OK', onPress: () => {} }
       ]
     );
+  if (isLoading) return <LoadingScreen />;
   return (
     <>
       <ScrollView style={postsListStyles.postsListContainer}>
-        {posts.map(({ postId, title, isFavourite, isSelected, ...rest }: any, index) => (
+        {posts.map(({ id, title, isFavourite, isSelected, ...rest }: any, index) => (
           <Post
             title={title}
-            key={postId}
-            onPressPost={() => handlePressPost({ postId, title, ...rest }, index, isSelected)}
+            key={id}
+            onPressPost={() => handlePressPost({ id, title, ...rest }, index, isSelected)}
             isFavourite={isFavourite}
             onSetFavourite={() =>
               setPosts((currentPosts: IPost[]) => handleSetFavouritePost([...currentPosts], index))

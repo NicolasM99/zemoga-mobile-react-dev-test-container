@@ -27,8 +27,9 @@ export const commentsSectionStyles = StyleSheet.create({
   closeBtn: {
     flex: 1,
     position: 'absolute',
-    top: -16,
-    right: -16,
-    padding: 16
+    top: 0,
+    right: 0,
+    padding: 16,
+    zIndex: 2
   }
 });

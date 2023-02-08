@@ -20,6 +20,6 @@ services:
       - CI=true
       - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true
-      - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.0.3 # If you need to build the app in an Android/iOS device, uncomment this variable and change the <IP> to your computer's IP and run 'docker-compose build'. For simulators/web it's not needed, as long as it is from the same computer running the project.
+      - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.0.6 # If you need to build the app in an Android/iOS device, uncomment this variable and change the <IP> to your computer's IP and run 'docker-compose build'. For simulators/web it's not needed, as long as it is from the same computer running the project.
 networks:
   zemoga_mobile_react_dev_test_net:

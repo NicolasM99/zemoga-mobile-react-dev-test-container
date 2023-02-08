@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface IPost {
-  postId: string;
+  postId: number;
   title: string;
   body: string;
   isFavourite?: boolean;
@@ -16,6 +16,8 @@ export type PostsListContextType = {
   setIsDeletingItems: (currentValue: boolean) => boolean | void;
   postsToDelete: IPost[] | [];
   setPostsToDelete: (currentPosts: IPost[]) => IPost[] | void;
+  isLoading: boolean;
+  setIsLoading: (currentValue: boolean) => boolean | void;
 };
 
 export interface PostsListProviderProps {

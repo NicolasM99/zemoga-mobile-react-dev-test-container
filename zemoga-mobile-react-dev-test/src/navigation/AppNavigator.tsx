@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Platform, View } from 'react-native';
 
 import NoInternetBar from 'src/components/NoInternetBar/NoInternetBar';
 import { PostsListProvider } from 'src/components/PostsList/context/PostsListContext';
@@ -15,13 +16,15 @@ const AppNavigator: FC = () => (
   <InternetStatusProvider>
     <PostsListProvider>
       <NoInternetBar />
-      <NavigationContainer>
-        <Stack.Navigator>
-          {stacks.map((stack: any) => (
-            <Stack.Screen key={stack.name} {...stack} />
-          ))}
-        </Stack.Navigator>
-      </NavigationContainer>
+      <View style={{ paddingBottom: Platform.OS === 'ios' ? 16 : 0, flex: 1 }}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            {stacks.map((stack: any) => (
+              <Stack.Screen key={stack.name} {...stack} />
+            ))}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </View>
     </PostsListProvider>
   </InternetStatusProvider>
 );
