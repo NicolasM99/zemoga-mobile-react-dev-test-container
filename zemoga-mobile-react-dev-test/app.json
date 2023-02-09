@@ -14,21 +14,40 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nicolas-moreno.zemoga-mobile-test",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#FFFFFF",
+        "package": "com.nicolas-moreno.zemoga-mobile-test",
+        "versionCode": 1
+      },
+      "package": "com.nico99.zemogamobiledevreacttest"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "packagerOpts": {
-      "sourceExts": ["js", "json", "ts", "tsx", "jsx", "vue"]
+      "sourceExts": [
+        "js",
+        "json",
+        "ts",
+        "tsx",
+        "jsx",
+        "vue"
+      ]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9abab127-f307-43dd-b4f5-f78788503892"
+      }
     }
   }
 }
