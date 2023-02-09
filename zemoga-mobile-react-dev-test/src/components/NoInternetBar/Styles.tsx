@@ -1,15 +1,15 @@
 import { StyleSheet } from 'react-native';
 export const noInternetBarStyles = StyleSheet.create({
   container: {
-    height: 100,
+    height: 80,
     backgroundColor: 'red',
     justifyContent: 'flex-end',
-    alignItems: 'center',
-    paddingBottom: 8
+    alignItems: 'center'
+    // paddingBottom: 8
   },
   message: {
     color: 'white',
     textAlign: 'center',
-    margin: 0
+    marginBottom: 8
   }
 });

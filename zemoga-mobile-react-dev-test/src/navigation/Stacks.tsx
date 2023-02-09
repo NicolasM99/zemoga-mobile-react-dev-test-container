@@ -7,7 +7,7 @@ import PostsScreen from '../screens/PostsScreen';
 
 export type StackParamList = {
   Posts: undefined;
-  PostDetails: { postId: number; title: string; body: string; userId: string };
+  PostDetails: { postId: number; title: string; body: string; userId: number };
 };
 
 export const stacks = [

@@ -1,4 +1,12 @@
-import React, { FC, useState, createContext, useContext, useEffect } from 'react';
+import React, {
+  FC,
+  useState,
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useImperativeHandle
+} from 'react';
 
 import { generalAction } from 'src/redux/actions';
 import { GET_POSTS } from 'src/redux/actionTypes';
@@ -17,7 +25,11 @@ const PostsListProvider: FC<PostsListProviderProps> = ({ children }: PostsListPr
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if (postsStore) setPosts([...postsStore]);
+    if (postsStore) {
+      setPosts(postsStore);
+      return;
+    }
+    setPosts([]);
   }, [postsStore]);
 
   useEffect(() => {

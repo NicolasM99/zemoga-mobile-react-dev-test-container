@@ -16,10 +16,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true,
-      "entitlements": {
-        "com.apple.developer.networking.wifi-info": true
-      }
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {

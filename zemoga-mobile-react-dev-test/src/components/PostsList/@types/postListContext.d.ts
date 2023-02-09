@@ -1,4 +1,7 @@
 import React from 'react';
+export type PostsContextRefType = {
+  getPosts: () => void;
+};
 
 export interface IPost {
   postId: number;
@@ -6,7 +9,7 @@ export interface IPost {
   body: string;
   isFavourite?: boolean;
   isSelected?: boolean;
-  userId: string;
+  userId: number;
 }
 
 export type PostsListContextType = {

@@ -14,8 +14,7 @@ export default (state: any, action: any) => {
   if (action.type === GENERAL_ERROR)
     return {
       ...state,
-      status: action?.payload?.response?.status,
-      students: action?.payload?.response?.data
+      status: action?.payload?.response?.status
     };
   if ([CHANGE_VALUES, CLEAR_VALUES].includes(action.type)) return { ...state, ...action.variables };
   if ([GET_POSTS].includes(action.type))

@@ -16,11 +16,11 @@ const PostFavouriteIcon: FC<PostFavouriteIconProps> = ({
 }: PostFavouriteIconProps) => {
   if (isReadOnly && !isFavourite) return <></>;
   return (
-    <TouchableOpacity onPress={(e) => (isReadOnly ? null : onSetFavourite?.(e))}>
-      <View style={{ flex: 1, marginLeft: 8 }}>
+    <View style={{ marginLeft: 8 }}>
+      <TouchableOpacity onPress={(e) => (isReadOnly ? null : onSetFavourite?.(e))}>
         <FontAwesome color={!isFavourite ? 'rgba(0,0,0, 0.2)' : 'orange'} name="star" size={24} />
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </View>
   );
 };
 
