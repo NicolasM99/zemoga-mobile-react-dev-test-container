@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
 
-import { useDispatch } from 'react-redux';
-
 import { COLORS } from 'src/constants/theme/colors';
 import { generalAction } from 'src/redux/actions';
 import { GET_POSTS } from 'src/redux/actionTypes';

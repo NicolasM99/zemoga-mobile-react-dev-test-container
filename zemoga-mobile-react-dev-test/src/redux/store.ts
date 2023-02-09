@@ -7,7 +7,8 @@ import generalReducer from './reducers';
 
 const persistConfig = {
   key: 'root',
-  storage: AsyncStorage
+  storage: AsyncStorage,
+  whitelist: ['posts', 'comments', 'user']
 };
 
 const persistedReducer = persistReducer(persistConfig, generalReducer);
