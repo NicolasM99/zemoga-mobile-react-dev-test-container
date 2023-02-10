@@ -42,11 +42,6 @@ const CommentsSection: FC<ICommentsSection> = ({ comments = [], modalRef }: ICom
             removeClippedSubviews
             windowSize={10}
           />
-          {/* <ScrollView>
-            {comments.map(({ id, ...rest }: ICommentStore) => (
-              <Comment key={id} id={id} {...rest} />
-            ))}
-          </ScrollView> */}
         </View>
       </View>
     </Modal>

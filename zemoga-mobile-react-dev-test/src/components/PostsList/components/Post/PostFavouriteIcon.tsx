@@ -21,11 +21,14 @@ const PostFavouriteIcon: FC<PostFavouriteIconProps> = ({
     <View
       style={{
         opacity: disabled ? 0.5 : 1,
-        paddingVertical: 16,
-        paddingHorizontal: 12
+        marginLeft: 8,
+        position: 'absolute',
+        right: 0,
+        padding: 16
       }}
     >
       <TouchableOpacity
+        testID="postFavouriteIcon"
         disabled={disabled}
         onPress={(e) => (isReadOnly ? null : onSetFavourite?.(e))}
       >

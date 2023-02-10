@@ -10,7 +10,9 @@ export interface PostTitleProps {
 
 const PostTitle: FC<PostTitleProps> = ({ children }: PostTitleProps) => (
   <View style={{ flex: 1 }}>
-    <Text style={postStyles.postTitle}>{children}</Text>
+    <Text testID={'postTitle'} style={postStyles.postTitle}>
+      {children}
+    </Text>
   </View>
 );
 

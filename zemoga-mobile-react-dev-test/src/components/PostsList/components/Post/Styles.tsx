@@ -10,7 +10,8 @@ export const postStyles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'white',
-    minHeight: 64
+    paddingVertical: 12,
+    paddingRight: 64
   },
   postTitle: {
     fontSize: 16

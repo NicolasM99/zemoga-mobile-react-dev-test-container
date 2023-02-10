@@ -13,7 +13,6 @@ const Post: FC<PostProps> = ({
   title = '',
   isSelected = false,
   isDeletingItems = false,
-
   actionsDisabled = false
 }) => {
   return (

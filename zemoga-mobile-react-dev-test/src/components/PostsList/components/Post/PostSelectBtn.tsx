@@ -9,7 +9,7 @@ import { IPostSelectBtn } from './@types/postSelectBtn';
 
 const PostSelectBtn: FC<IPostSelectBtn> = ({ isSelected = false }: IPostSelectBtn) => {
   return (
-    <View style={{ marginRight: 16 }}>
+    <View testID="postSelectIcon" style={{ marginRight: 16 }}>
       <FontAwesome
         color={!isSelected ? 'rgba(0,0,0, 0.2)' : COLORS.primary}
         name={!isSelected ? 'circle' : 'check-circle'}
