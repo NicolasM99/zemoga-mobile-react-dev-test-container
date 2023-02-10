@@ -4,11 +4,11 @@
 
 Then scan the following QR Code:
 
-![expo-go](https://user-images.githubusercontent.com/66321988/218197457-68ebb014-5423-4b38-830e-0bd7c02b346f.svg | width=100)
+<img src='https://user-images.githubusercontent.com/66321988/218197457-68ebb014-5423-4b38-830e-0bd7c02b346f.svg' width="300px" />
 
 Or, open this link in your device:
 
-[exp://exp.host/@nico99/zemoga-mobile-dev-react-test?release-channel=default](exp://exp.host/@nico99/zemoga-mobile-dev-react-test?release-channel=default)
+[exp://exp.host/@nico99/zemoga-mobile-dev-react-test?release-channel=default](exp://exp.host/@nico99/zemoga-mobile-dev-react-test?release-channel=default) 
 
 The published project can be found at:
 
@@ -73,13 +73,7 @@ Watch Usage
  › Press Enter to trigger a test run.
  ```
 
-## Proposed architecture and practices
 
-### Wireframes design
-
-A basic approach to the UI design was made with Figma. I created some wireframes of the screen to have a better idea of the functionality and the final design, although some changes were made when the app was developed. The Figma project can be found at:
-
-[https://www.figma.com/file/qcjh7kvSol1KcsBJMsLi4y/Zemoga-Mobile-Test?node-id=0%3A1&t=0s60chKk9Yn7UURt-1](https://www.figma.com/file/qcjh7kvSol1KcsBJMsLi4y/Zemoga-Mobile-Test?node-id=0%3A1&t=0s60chKk9Yn7UURt-1)
 
 ### Screens 
 
@@ -87,30 +81,41 @@ A basic approach to the UI design was made with Figma. I created some wireframes
 
 Contains the ```posts``` data loaded by the API. These posts can be modified by adding them to favourites pressing the star icon, delete by pressing the trash icon, and reloading everything by pressing the spinning icon. Please note that you can delete either only selected posts or all unfavourite posts:
 
-![01](https://user-images.githubusercontent.com/66321988/218205675-fde7a925-4a84-44a6-99d7-19d6d8b0b8e4.jpg)
-![02](https://user-images.githubusercontent.com/66321988/218205698-edcab7ae-fbaa-4952-9107-a69f82464d4a.jpg)
-![03](https://user-images.githubusercontent.com/66321988/218205704-82e2515c-7805-47f8-9ef8-ba1e046d7d7c.jpg)
-![04](https://user-images.githubusercontent.com/66321988/218205720-dc3ff7f3-8480-42a1-bb3d-2cf4f6992fed.jpg)
-![05](https://user-images.githubusercontent.com/66321988/218205731-0e9cda59-6a83-4a64-8468-4282b05c1c8c.jpg)
-![06](https://user-images.githubusercontent.com/66321988/218205733-82ac2f52-b41c-4eb3-9ddc-0db98949bd2d.jpg)
+<div style={{flex-wrap: wrap}}>
+<img src="https://user-images.githubusercontent.com/66321988/218205675-fde7a925-4a84-44a6-99d7-19d6d8b0b8e4.jpg" width="300px"/>
+<img src="https://user-images.githubusercontent.com/66321988/218205698-edcab7ae-fbaa-4952-9107-a69f82464d4a.jpg" width="300px"/>
+<img src="https://user-images.githubusercontent.com/66321988/218205704-82e2515c-7805-47f8-9ef8-ba1e046d7d7c.jpg" width="300px"/>
+<img src="https://user-images.githubusercontent.com/66321988/218205720-dc3ff7f3-8480-42a1-bb3d-2cf4f6992fed.jpg" width="300px"/>
+<img src="https://user-images.githubusercontent.com/66321988/218205731-0e9cda59-6a83-4a64-8468-4282b05c1c8c.jpg" width="300px"/>
+<img src="https://user-images.githubusercontent.com/66321988/218205733-82ac2f52-b41c-4eb3-9ddc-0db98949bd2d.jpg" width="300px"/>
+</div>
 
 #### Posts details screen
 
 In this screen the data of the selected ```post``` will be displayed, as well as the user who posted it, known as ```author```. The Comments section opens as a modal by pressing the floating button on the right-bottom corner 
+<div style={{flex-wrap: wrap}}>
+<img src="https://user-images.githubusercontent.com/66321988/218205845-89b9a250-0bec-4e6e-9d09-c4b15103da27.jpg" width="300px"/>
+<img src="https://user-images.githubusercontent.com/66321988/218205863-019dfba4-82df-4a1c-8a1e-58032e7e62dd.jpg" width="300px"/> 
+</div> 
 
-![Imagen de WhatsApp 2023-02-10 a las 16 52 06](https://user-images.githubusercontent.com/66321988/218205845-89b9a250-0bec-4e6e-9d09-c4b15103da27.jpg)
-![07](https://user-images.githubusercontent.com/66321988/218205863-019dfba4-82df-4a1c-8a1e-58032e7e62dd.jpg)
 
-
-### BONUS POINT: Off-line solution
+### ⭐ BONUS POINT: Off-line solution
 
 The off line solution was achieved by persisting the data in the device local storage. You can test it by turning off the internet connection of the device (Wi-Fi and mobile data) and a message will appear at the top of the application, indicating the actions you can't perform and the data that's displayed.
-
-![08](https://user-images.githubusercontent.com/66321988/218205888-0214f172-8b5e-4200-9361-87832c6985f3.jpg)
-![09](https://user-images.githubusercontent.com/66321988/218205912-eb9b424d-8555-4f5e-9e98-fdf56171e890.jpg)
-
+<div style={{flex-wrap: wrap}}>
+<img src="https://user-images.githubusercontent.com/66321988/218205888-0214f172-8b5e-4200-9361-87832c6985f3.jpg" width="300px"/>
+<img src="https://user-images.githubusercontent.com/66321988/218205912-eb9b424d-8555-4f5e-9e98-fdf56171e890.jpg" width="300px"/> 
+</div>  
 
 **Also notice that the application persists the posts information once the app is closed and opened again (as well as deleted posts and the ones selected as favourite)**
+
+## Proposed architecture and practices
+
+### Wireframes design
+
+A basic approach to the UI design was made with Figma. I created some wireframes of the screen to have a better idea of the functionality and the final design, although some changes were made when the app was developed. The Figma project can be found at:
+
+[https://www.figma.com/file/qcjh7kvSol1KcsBJMsLi4y/Zemoga-Mobile-Test?node-id=0%3A1&t=0s60chKk9Yn7UURt-1](https://www.figma.com/file/qcjh7kvSol1KcsBJMsLi4y/Zemoga-Mobile-Test?node-id=0%3A1&t=0s60chKk9Yn7UURt-1)
 
 ### Structure
 
