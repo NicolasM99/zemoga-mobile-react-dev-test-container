@@ -101,7 +101,7 @@ The off line solution was achieved by persisting the data in the device local st
 
 (images no connection)
 
-
+**Also notice that the application persists the posts information once the app is closed and opened again (as well as deleted posts and the ones selected as favourite)**
 
 ### Structure
 
@@ -110,3 +110,19 @@ For this project I structured it as a standard React Native application, having 
 ### Redux
 
 The API requests and store management were made using redux, as it allowed to easily manage the data accross components and even persist it when there was no internet connection
+
+### TypeScript
+
+Most of the components and functions are typed correctly, although some are typed as ```any``` because I had no more time to check the types.
+
+### eslint
+
+To make sure of having a better code, ```eslint``` was used with ```Prettier``` in order to mantain more organized the project.
+
+### Why Expo?
+
+Because it allowed me to build an application for Android and iOS with almost no difference in the code and publish it in the same place.
+
+### Unit testing with react-testing-library
+
+All components were tested, covering the mounting, props passed, as well as more complex usage with React Custom Hooks and Providers.
