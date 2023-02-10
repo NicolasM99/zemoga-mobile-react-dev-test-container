@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CommentsSection /> unit tests Should mount correctly the component 1`] = `
+<Modal
+  animationType="slide"
+  hardwareAccelerated={false}
+  testID="modalComments"
+  transparent={true}
+  visible={false}
+/>
+`;

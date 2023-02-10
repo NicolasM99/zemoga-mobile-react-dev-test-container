@@ -25,6 +25,7 @@ const Button: FC<IButton> = ({
         }}
       >
         <Text
+          testID="buttonLabel"
           style={{
             ...buttonStyles.title,
             ...(outlined && buttonStyles[`titleOutlined_${variant}`]),

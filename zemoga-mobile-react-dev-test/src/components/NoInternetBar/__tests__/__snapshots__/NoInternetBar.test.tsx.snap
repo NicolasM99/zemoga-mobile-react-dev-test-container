@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NoInternetBar /> unit tests Should mount correctly the component 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "red",
+      "justifyContent": "flex-end",
+      "paddingLeft": 16,
+      "paddingRight": 16,
+      "paddingTop": 64,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "white",
+        "fontSize": 16,
+        "fontWeight": "normal",
+        "marginBottom": 8,
+        "textAlign": "center",
+      }
+    }
+    testID="header"
+  >
+    No internet access. You're seeing either old posts or no author/comments information and you can't perform update or delete actions.
+  </Text>
+</View>
+`;

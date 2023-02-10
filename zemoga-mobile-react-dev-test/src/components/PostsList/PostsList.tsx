@@ -62,6 +62,7 @@ const PostsList: FC = () => {
       if (requestIndex === deleteData?.length + 1) {
         const newPosts = handleFilterDeletedPosts(posts, deleteData);
         dispatch(changeValues({ posts: newPosts, requestIndex: null }));
+        setPostsToDelete([]);
         setDeleteData([]);
         setPosts(newPosts);
         setIsLoadingDelete(false);

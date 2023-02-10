@@ -2,16 +2,17 @@ import React, { FC } from 'react';
 
 import { ActivityIndicator, View, Text } from 'react-native';
 
+import * as PostsListContext from 'src/components/PostsList/context/PostsListContext';
 import { COLORS } from 'src/constants/theme/colors';
 import { InternetStatusContextType } from 'src/context/@types/internetStatusContext';
-import { useInternetStatusContext } from 'src/context/InternetStatusContext';
+import * as InternetStatusContext from 'src/context/InternetStatusContext';
 
 import { PostsListContextType } from '../PostsList/@types/postListContext';
-import { usePostsListContext } from '../PostsList/context/PostsListContext';
 
 const LoadingScreen: FC = () => {
-  const { isLoading } = usePostsListContext() as PostsListContextType;
-  const { internetStatus } = useInternetStatusContext() as InternetStatusContextType;
+  const { isLoading } = PostsListContext.usePostsListContext() as PostsListContextType;
+  const { internetStatus } =
+    InternetStatusContext.useInternetStatusContext() as InternetStatusContextType;
   if (isLoading && internetStatus)
     return (
       <View

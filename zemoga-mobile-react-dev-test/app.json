@@ -14,9 +14,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.nicolas-moreno.zemoga-mobile-test",
@@ -25,9 +23,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF",
-        "package": "com.nicolas-moreno.zemoga-mobile-test",
-        "versionCode": 1
+        "backgroundColor": "#FFFFFF"
       },
       "package": "com.nico99.zemogamobiledevreacttest"
     },
@@ -35,14 +31,7 @@
       "favicon": "./assets/favicon.png"
     },
     "packagerOpts": {
-      "sourceExts": [
-        "js",
-        "json",
-        "ts",
-        "tsx",
-        "jsx",
-        "vue"
-      ]
+      "sourceExts": ["js", "json", "ts", "tsx", "jsx", "vue"]
     },
     "extra": {
       "eas": {

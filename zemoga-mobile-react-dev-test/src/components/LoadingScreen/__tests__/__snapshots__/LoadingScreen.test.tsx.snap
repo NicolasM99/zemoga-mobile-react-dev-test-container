@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoadingScreen /> unit tests Should mount correctly the component 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "rgba(255,255,255,0.9)",
+      "height": "100%",
+      "justifyContent": "center",
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "width": "100%",
+      "zIndex": 9999,
+    }
+  }
+>
+  <ActivityIndicator
+    color="#10c64e"
+    size="large"
+  />
+  <Text
+    style={
+      Object {
+        "marginTop": 16,
+      }
+    }
+  >
+     Loading, please wait...
+  </Text>
+</View>
+`;

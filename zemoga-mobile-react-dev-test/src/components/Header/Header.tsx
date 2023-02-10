@@ -8,6 +8,7 @@ import { fontSizes, headerStyles } from './Styles';
 const Header: FC<IHeader> = ({ children, bold = true, variant = 'h1', style = {} }: IHeader) => {
   return (
     <Text
+      testID="header"
       style={{
         fontSize: fontSizes[variant],
         fontWeight: bold ? 'bold' : 'normal',

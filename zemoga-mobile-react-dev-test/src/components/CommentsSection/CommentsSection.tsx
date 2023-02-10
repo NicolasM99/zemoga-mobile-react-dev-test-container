@@ -1,4 +1,4 @@
-import React, { useState, FC, useImperativeHandle, useCallback } from 'react';
+import React, { FC, useImperativeHandle, useCallback } from 'react';
 
 import { FontAwesome5 } from '@expo/vector-icons';
 import { View, Modal, TouchableOpacity, FlatList } from 'react-native';
@@ -9,7 +9,7 @@ import { commentsSectionStyles } from './Styles';
 import Header from '../Header/Header';
 
 const CommentsSection: FC<ICommentsSection> = ({ comments = [], modalRef }: ICommentsSection) => {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = React.useState(false);
 
   useImperativeHandle(modalRef, () => ({
     closeModal: () => setOpenModal(false),
@@ -29,7 +29,7 @@ const CommentsSection: FC<ICommentsSection> = ({ comments = [], modalRef }: ICom
     []
   );
   return (
-    <Modal animationType="slide" transparent={true} visible={openModal}>
+    <Modal testID="modalComments" animationType="slide" transparent={true} visible={openModal}>
       <View style={commentsSectionStyles.container}>
         <View style={commentsSectionStyles.content}>
           <CloseBtn />

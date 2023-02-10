@@ -1,6 +1,6 @@
 import { fireEvent, waitFor, screen } from '@testing-library/react-native';
 
-import { InternetStatusContextType } from 'src/context/@types/internetStatusContext';
+import * as InternetStatusContext from 'src/context/InternetStatusContext';
 import { POST_DETAILS } from 'src/navigation/routes';
 import { INITIAL_STATE } from 'src/redux/reducers';
 import { renderWithStoreProviders } from 'src/redux/utils/test-utils';
@@ -24,10 +24,9 @@ describe('<PostsList /> unit tests', () => {
       useDispatch: () => true
     }))
   );
-  jest.mock('src/context/internetStatusContext', () => ({
-    __esModule: true,
-    useInternetStatusContext: (): InternetStatusContextType => ({ internetStatus: true })
-  }));
+  jest.spyOn(InternetStatusContext, 'useInternetStatusContext').mockReturnValue({
+    internetStatus: true
+  });
   it('Should mount the component correctly', async () => {
     renderWithStoreProviders(
       <MockedScreenProvider>

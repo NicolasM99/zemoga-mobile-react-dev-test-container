@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Paragraph /> unit tests Should mount correctly the component 1`] = `
+<Text
+  style={
+    Object {
+      "marginBottom": 16,
+      "marginTop": 16,
+    }
+  }
+>
+  Lorem ipsum 
+</Text>
+`;

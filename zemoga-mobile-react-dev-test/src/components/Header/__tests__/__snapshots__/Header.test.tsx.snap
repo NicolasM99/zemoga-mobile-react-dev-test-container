@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> unit tests Should mount correctly the component 1`] = `
+<Text
+  style={
+    Object {
+      "fontSize": 20,
+      "fontWeight": "bold",
+      "marginBottom": 16,
+    }
+  }
+  testID="header"
+>
+  Header test
+</Text>
+`;

@@ -8,5 +8,5 @@ export type ModalRefType = {
 };
 export interface ICommentsSection {
   comments: ICommentStore[] | [];
-  modalRef: React.ElementRef;
+  modalRef?: React.ElementRef;
 }

@@ -6,5 +6,5 @@ export interface IButton {
   variant?: 'primary' | 'secondary' | 'danger';
   outlined?: boolean;
   rounded?: boolean;
-  onPress: ((e: GestureResponderEvent) => void) & (() => void);
+  onPress?: ((e: GestureResponderEvent) => void) | (() => void);
 }

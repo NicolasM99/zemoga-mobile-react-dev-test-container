@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IconFloatingButton /> unit tests Should mount correctly the component 1`] = `
+<View
+  accessibilityState={
+    Object {
+      "disabled": true,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#10c64e",
+        "borderRadius": 50,
+        "bottom": 16,
+        "flex": 1,
+        "height": 64,
+        "justifyContent": "center",
+        "opacity": 0.5,
+        "position": "absolute",
+        "right": 16,
+        "width": 64,
+      }
+    }
+  >
+    <Text />
+  </View>
+</View>
+`;

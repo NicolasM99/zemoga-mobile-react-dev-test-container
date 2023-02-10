@@ -18,7 +18,7 @@ const ObjectList: FC<IObjectList> = ({ objectData }: IObjectList) => {
   return (
     <View>
       {objectList.map(({ key, value, level }: any) => (
-        <Text key={key + value + level} style={{ marginTop: 4 }}>
+        <Text testID={`${key}_${level}`} key={key + value + level} style={{ marginTop: 4 }}>
           <Text style={{ fontWeight: 'bold' }}>
             {printSpaces(level)}
             {key.charAt(0).toUpperCase() + key.slice(1)}:{' '}

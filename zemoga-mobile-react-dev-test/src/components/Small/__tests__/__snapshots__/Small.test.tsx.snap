@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Small /> unit tests Should mount correctly the component 1`] = `
+<Text
+  style={
+    Object {
+      "fontSize": 12,
+    }
+  }
+>
+  Lorem ipsum small
+</Text>
+`;

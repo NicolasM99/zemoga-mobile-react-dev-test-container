@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Comment /> unit tests Should mount correctly the component 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgba(0,0,0,0.1)",
+      "borderRadius": 8,
+      "flex": 1,
+      "marginBottom": 8,
+      "padding": 16,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 12,
+      }
+    }
+    testID="commentName"
+  >
+    id labore ex et quam laborum
+  </Text>
+  <Text
+    style={
+      Object {
+        "fontSize": 12,
+      }
+    }
+    testID="commentEmail"
+  >
+    Eliseo@gardner.biz
+  </Text>
+  <Text
+    style={
+      Object {
+        "marginBottom": 16,
+        "marginTop": 8,
+      }
+    }
+    testID="commentBody"
+  >
+    laudantium enim quasi est quidem magnam voluptate ipsam eos
+tempora quo necessitatibus
+dolor quam autem quasi
+reiciendis et nam sapiente accusantium
+  </Text>
+</View>
+`;
