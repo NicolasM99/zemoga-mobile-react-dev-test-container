@@ -20,5 +20,6 @@ services:
       - CI=true
       - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true
+      #- REACT_NATIVE_PACKAGER_HOSTNAME=<IP> # Change the <IP> to your local computer to run it with docker-compose.
 networks:
   zemoga_mobile_react_dev_test_net:

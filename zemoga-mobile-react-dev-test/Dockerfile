@@ -12,3 +12,5 @@ COPY . /app
 
 #install dependencies
 RUN yarn install
+
+CMD [ "yarn", "run", "start" ]
