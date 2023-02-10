@@ -9,7 +9,7 @@
     "web": "expo start --web",
     "lint": "eslint src/ --fix --max-warnings=0",
     "prettier": "prettier --config .prettierrc src/**/*.tsx --write",
-    "test": "jest -u --watch --coverage=false"
+    "test": "jest -u --watch --coverage=false ."
   },
   "dependencies": {
     "@expo/ngrok": "^2.5.0",
@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@reduxjs/toolkit": "^1.9.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/jest-native": "^5.4.1",
     "@testing-library/react-native": "^11.5.2",
@@ -84,7 +85,7 @@
       "node"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|redux-persist-expo-filesystem)"
     ],
     "setupFilesAfterEnv": [
       "@testing-library/jest-native/extend-expect",
