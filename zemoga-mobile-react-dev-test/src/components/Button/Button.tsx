@@ -27,7 +27,8 @@ const Button: FC<IButton> = ({
         <Text
           style={{
             ...buttonStyles.title,
-            ...(outlined && buttonStyles[`titleOutlined_${variant}`])
+            ...(outlined && buttonStyles[`titleOutlined_${variant}`]),
+            ...(outlined && buttonStyles.titleOutlined)
           }}
         >
           {title}

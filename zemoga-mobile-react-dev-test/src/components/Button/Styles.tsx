@@ -39,6 +39,9 @@ export const buttonStyles = StyleSheet.create({
     borderWidth: BORDER_WIDTH,
     borderColor: 'red'
   },
+  titleOutlined: {
+    fontWeight: 'bold'
+  },
   titleOutlined_primary: {
     color: COLORS.primary
   },
