@@ -4,7 +4,7 @@
 
 Then scan the following QR Code:
 
-![expo-go](https://user-images.githubusercontent.com/66321988/218197457-68ebb014-5423-4b38-830e-0bd7c02b346f.svg)
+![expo-go](https://user-images.githubusercontent.com/66321988/218197457-68ebb014-5423-4b38-830e-0bd7c02b346f.svg | width=100)
 
 Or, open this link in your device:
 
