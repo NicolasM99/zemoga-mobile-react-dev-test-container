@@ -1,14 +1,15 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { applyMiddleware, compose, legacy_createStore as createStore } from 'redux';
-import { persistStore, persistReducer } from 'redux-persist';
+import { persistReducer, persistStore } from 'redux-persist';
+import ExpoFileSystemStorage from 'redux-persist-expo-filesystem';
 import thunk from 'redux-thunk';
 
 import generalReducer from './reducers';
 
 const persistConfig = {
   key: 'root',
-  storage: AsyncStorage,
-  whitelist: ['posts', 'comments', 'user']
+  storage: ExpoFileSystemStorage,
+  whitelist: ['posts', 'comments', 'users'],
+  blacklist: ['requestIndex', 'patchedPost']
 };
 
 const persistedReducer = persistReducer(persistConfig, generalReducer);

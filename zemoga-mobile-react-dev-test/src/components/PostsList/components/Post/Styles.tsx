@@ -4,7 +4,7 @@ export const postStyles = StyleSheet.create({
   postContainer: {
     flexDirection: 'row',
     width: 'auto',
-    padding: 20,
+    paddingLeft: 10,
     margin: 8,
     marginBottom: 4,
     justifyContent: 'space-between',

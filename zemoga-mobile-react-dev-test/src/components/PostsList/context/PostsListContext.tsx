@@ -1,12 +1,4 @@
-import React, {
-  FC,
-  useState,
-  createContext,
-  useContext,
-  useEffect,
-  useRef,
-  useImperativeHandle
-} from 'react';
+import React, { FC, useState, createContext, useContext, useEffect } from 'react';
 
 import { generalAction } from 'src/redux/actions';
 import { GET_POSTS } from 'src/redux/actionTypes';
@@ -22,7 +14,7 @@ const PostsListProvider: FC<PostsListProviderProps> = ({ children }: PostsListPr
   const [postsToDelete, setPostsToDelete] = useState<IPost[] | []>([]);
   const [isDeletingItems, setIsDeletingItems] = useState(false);
   const [dispatch, { posts: postsStore }, status] = useRedux(['posts']);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (postsStore) {
@@ -37,12 +29,7 @@ const PostsListProvider: FC<PostsListProviderProps> = ({ children }: PostsListPr
   }, [status]);
 
   useEffect(() => {
-    if (isLoading) setIsLoading(false);
-  }, [isLoading]);
-
-  useEffect(() => {
-    dispatch(generalAction({ actionType: GET_POSTS, api: POSTS_API }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (!postsStore.length) dispatch(generalAction({ actionType: GET_POSTS, api: POSTS_API }));
   }, []);
   const valueObj = {
     posts,

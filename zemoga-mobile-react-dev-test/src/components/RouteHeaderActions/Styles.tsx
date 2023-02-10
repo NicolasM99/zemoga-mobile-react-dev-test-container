@@ -1,4 +1,4 @@
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export const routeHeaderStyles = StyleSheet.create({
   routeHeaderContainer: {
@@ -16,13 +16,15 @@ export const routeHeaderStyles = StyleSheet.create({
   routeHeaderActionsContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-    paddingRight: Platform.OS === 'ios' ? 0 : 16
+    alignItems: 'center'
   },
   routeHeaderAction: {
-    marginLeft: 24
+    padding: 16
   },
   routeHeaderGoBackBtnContainer: {
     marginRight: 16
+  },
+  disabled: {
+    opacity: 0.5
   }
 });

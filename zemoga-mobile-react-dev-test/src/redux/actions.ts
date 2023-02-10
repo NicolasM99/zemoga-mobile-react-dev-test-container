@@ -5,7 +5,7 @@ import { CHANGE_VALUES, CLEAR_VALUES, GENERAL_ERROR } from './actionTypes';
 import { API_URL } from './paths';
 import { INITIAL_STATE } from './reducers';
 
-// axios.defaults.baseURL = API_URL;
+axios.defaults.baseURL = API_URL;
 
 export const changeValues = (variables: any) => {
   return (dispatch: any) => {
@@ -24,7 +24,7 @@ export const generalAction = ({
   api = '/',
   method = 'get',
   data = undefined, //! MUST BE UNDEFINED IF NOT NEEDED, NOT NULL OR EMPTY OBJECT. OTHERWISE WILL FAIL ON iOS
-  requestIndex,
+  requestIndex = null,
   params
 }: IGeneralAction) => {
   const fetchParams: any = {
@@ -40,7 +40,7 @@ export const generalAction = ({
     fetchParams.headers['Content-Type'] = 'multipart/form-data';
   return (dispatch: any) => {
     return axios({
-      url: `${API_URL}${api}${typeof params === 'string' ? params : ''}`,
+      url: `${api}${typeof params === 'string' ? params : ''}`,
       ...fetchParams
     })
       .then((response) => {
@@ -56,7 +56,6 @@ export const generalAction = ({
         });
       })
       .catch((error) => {
-        alert(error);
         dispatch({ type: GENERAL_ERROR, payload: error });
       });
   };

@@ -14,5 +14,8 @@ export const iconFloatingButtonStyles = StyleSheet.create({
     width: 64,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  disabled: {
+    opacity: 0.5
   }
 });

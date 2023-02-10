@@ -12,13 +12,16 @@ const Post: FC<PostProps> = ({
   isFavourite = false,
   title = '',
   isSelected = false,
-  isDeletingItems = false
+  isDeletingItems = false,
+
+  actionsDisabled = false
 }) => {
   return (
     <PostContainer onPressPost={onPressPost}>
       {isDeletingItems && <PostSelectBtn isSelected={isSelected} />}
       <PostTitle>{title}</PostTitle>
       <PostFavouriteIcon
+        disabled={actionsDisabled}
         isReadOnly={isDeletingItems}
         onSetFavourite={onSetFavourite}
         isFavourite={isFavourite}

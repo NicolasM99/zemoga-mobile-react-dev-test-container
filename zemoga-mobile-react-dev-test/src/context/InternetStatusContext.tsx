@@ -2,6 +2,9 @@ import React, { createContext, FC, useContext, useEffect, useState } from 'react
 
 import NetInfo from '@react-native-community/netinfo';
 
+import { changeValues } from 'src/redux/actions';
+import { useRedux } from 'src/redux/hooks/useRedux';
+
 import { IInternetStatusContext, InternetStatusContextType } from './@types/internetStatusContext';
 
 const InternetStatusContext = createContext<InternetStatusContextType | null>(null);
@@ -10,6 +13,7 @@ const InternetStatusProvider: FC<IInternetStatusContext> = ({
   children
 }: IInternetStatusContext) => {
   const [internetStatus, setInternetStatus] = useState<boolean | null>(true);
+  const [dispatch, { internetStatus: storeInternetStatus }] = useRedux(['internetStatus']);
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
       setInternetStatus(state.isConnected);
@@ -18,6 +22,10 @@ const InternetStatusProvider: FC<IInternetStatusContext> = ({
       unsubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    dispatch(changeValues({ internetStatus: storeInternetStatus }));
+  }, [internetStatus]);
 
   const valueObj = {
     internetStatus

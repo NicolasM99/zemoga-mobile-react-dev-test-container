@@ -1,4 +1,4 @@
-import React, { FC, useState, useRef, useEffect, useMemo } from 'react';
+import React, { FC, useRef, useEffect, useMemo } from 'react';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { ScrollView, View } from 'react-native';
@@ -7,10 +7,13 @@ import { ModalRefType } from 'src/components/CommentsSection/@types/commentsSect
 import CommentsSection from 'src/components/CommentsSection/CommentsSection';
 import Header from 'src/components/Header/Header';
 import IconFloatingButton from 'src/components/IconFloatingButton/IconFloatingButton';
-import LoadingScreen from 'src/components/LoadingScreen/LoadingScreen';
 import ObjectList from 'src/components/ObjectList/ObjectList';
 import Paragraph from 'src/components/Paragraph/Paragraph';
+import { PostsListContextType } from 'src/components/PostsList/@types/postListContext';
+import { usePostsListContext } from 'src/components/PostsList/context/PostsListContext';
 import Small from 'src/components/Small/Small';
+import { InternetStatusContextType } from 'src/context/@types/internetStatusContext';
+import { useInternetStatusContext } from 'src/context/InternetStatusContext';
 import { StackParamList } from 'src/navigation/Stacks';
 import { ICommentStore } from 'src/redux/@types/commentStore';
 import { IUserStore } from 'src/redux/@types/userStore';
@@ -25,23 +28,27 @@ export type PostDetailScreenProps = NativeStackScreenProps<StackParamList, 'Post
 
 const PostDetailsScreen: FC<PostDetailScreenProps> = ({ route }: PostDetailScreenProps) => {
   const { postId, body, title, userId } = route.params;
-  const [dispatch, { user, comments: commentsData }, status] = useRedux(['user', 'comments']);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [dispatch, { users, comments: commentsData }, status] = useRedux(['users', 'comments']);
+  const { setIsLoading } = usePostsListContext() as PostsListContextType;
   const modalRef = useRef<ModalRefType>(null);
 
-  const author = useMemo<IUserStore>(() => user || {}, [user]);
-  const comments = useMemo<ICommentStore[]>(() => commentsData || [], [commentsData]);
+  const { internetStatus } = useInternetStatusContext() as InternetStatusContextType;
+
+  const author: IUserStore = useMemo<IUserStore>(() => users[userId] || {}, [users, userId]);
+  const comments: ICommentStore[] | [] = useMemo<ICommentStore[] | []>(
+    () => commentsData[postId] || [],
+    [commentsData, postId]
+  );
 
   useEffect(() => {
+    setIsLoading(true);
     dispatch(generalAction({ actionType: GET_USER, api: `${USER_API}/${userId}` }));
     dispatch(
       generalAction({ actionType: GET_COMMENTS, api: `${POSTS_API}/${postId}${COMMENTS_API}` })
     );
     return () => {
-      setIsLoading(true);
-      dispatch(changeValues({ user: {}, comments: [] }));
+      dispatch(changeValues({ status: null }));
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -52,8 +59,6 @@ const PostDetailsScreen: FC<PostDetailScreenProps> = ({ route }: PostDetailScree
     setIsLoading(true);
   }, [status]);
 
-  if (isLoading || !comments.length) return <LoadingScreen />;
-
   const handleOpenComments = () => {
     modalRef.current?.openModal();
   };
@@ -61,7 +66,7 @@ const PostDetailsScreen: FC<PostDetailScreenProps> = ({ route }: PostDetailScree
   const PostInfo = () => (
     <View>
       <Header>{title}</Header>
-      <Small>Posted by "{author.username}"</Small>
+      {author.id ? <Small>Posted by "{author.username}"</Small> : <></>}
       <Paragraph>{body}</Paragraph>
     </View>
   );
@@ -77,9 +82,13 @@ const PostDetailsScreen: FC<PostDetailScreenProps> = ({ route }: PostDetailScree
     <>
       <ScrollView style={screenContainer.container}>
         <PostInfo />
-        <AuthorInfo />
+        {author.id ? <AuthorInfo /> : <></>}
       </ScrollView>
-      <IconFloatingButton onPress={() => handleOpenComments()} icon="comment" />
+      <IconFloatingButton
+        disabled={!internetStatus && !comments.length}
+        onPress={() => handleOpenComments()}
+        icon="comment"
+      />
       <CommentsSection comments={comments} modalRef={modalRef} />
     </>
   );

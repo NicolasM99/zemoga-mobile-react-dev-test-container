@@ -7,17 +7,28 @@ export interface PostFavouriteIconProps {
   onSetFavourite?: (event: GestureResponderEvent) => void;
   isFavourite?: boolean;
   isReadOnly?: boolean;
+  disabled?: boolean;
 }
 
 const PostFavouriteIcon: FC<PostFavouriteIconProps> = ({
   onSetFavourite,
   isFavourite = false,
-  isReadOnly = false
+  isReadOnly = false,
+  disabled = false
 }: PostFavouriteIconProps) => {
   if (isReadOnly && !isFavourite) return <></>;
   return (
-    <View style={{ marginLeft: 8 }}>
-      <TouchableOpacity onPress={(e) => (isReadOnly ? null : onSetFavourite?.(e))}>
+    <View
+      style={{
+        opacity: disabled ? 0.5 : 1,
+        paddingVertical: 16,
+        paddingHorizontal: 12
+      }}
+    >
+      <TouchableOpacity
+        disabled={disabled}
+        onPress={(e) => (isReadOnly ? null : onSetFavourite?.(e))}
+      >
         <FontAwesome color={!isFavourite ? 'rgba(0,0,0, 0.2)' : 'orange'} name="star" size={24} />
       </TouchableOpacity>
     </View>

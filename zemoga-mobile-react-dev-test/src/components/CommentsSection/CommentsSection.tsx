@@ -1,9 +1,7 @@
-import React, { useState, FC, useImperativeHandle } from 'react';
+import React, { useState, FC, useImperativeHandle, useCallback } from 'react';
 
 import { FontAwesome5 } from '@expo/vector-icons';
-import { View, Modal, TouchableOpacity, ScrollView } from 'react-native';
-
-import { ICommentStore } from 'src/redux/@types/commentStore';
+import { View, Modal, TouchableOpacity, FlatList } from 'react-native';
 
 import { ICommentsSection } from './@types/commentsSection';
 import Comment from './components/Comment/Comment';
@@ -26,17 +24,29 @@ const CommentsSection: FC<ICommentsSection> = ({ comments = [], modalRef }: ICom
       <FontAwesome5 name="times" size={20} />
     </TouchableOpacity>
   );
+  const renderItem = useCallback(
+    ({ item: { id, ...rest } }: any) => <Comment key={id} id={id} {...rest} />,
+    []
+  );
   return (
     <Modal animationType="slide" transparent={true} visible={openModal}>
       <View style={commentsSectionStyles.container}>
         <View style={commentsSectionStyles.content}>
           <CloseBtn />
           <Header>Comments</Header>
-          <ScrollView>
+          <FlatList
+            data={comments}
+            renderItem={renderItem}
+            initialNumToRender={10}
+            maxToRenderPerBatch={10}
+            removeClippedSubviews
+            windowSize={10}
+          />
+          {/* <ScrollView>
             {comments.map(({ id, ...rest }: ICommentStore) => (
               <Comment key={id} id={id} {...rest} />
             ))}
-          </ScrollView>
+          </ScrollView> */}
         </View>
       </View>
     </Modal>

@@ -1,9 +1,10 @@
 {
   "exclude": ["node_modules", "build"],
-  "include": ["src"],
+  "include": ["src", "**/*.tsx", "**/*.ts", "**/*.js"],
   "extends": "expo/tsconfig.base",
   "compileOnSave": true,
   "compilerOptions": {
+    "noUnusedLocals": false,
     "importHelpers": true,
     "strict": true,
     "paths": {

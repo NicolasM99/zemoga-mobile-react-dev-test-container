@@ -1,3 +1,5 @@
+import * as _ from 'lodash';
+
 import { IRouteHeaderAction } from 'src/components/RouteHeaderActions/RouteHeaderActions';
 
 import { IPost } from '../@types/postListContext';
@@ -15,17 +17,21 @@ export const postListActions: Array<IRouteHeaderAction> = [
   }
 ];
 
-export const handleSetFavouritePost = (posts: IPost[], index: number) => {
+export const handleSetFavouritePost = (posts: IPost[], index: number): IPost[] => {
   const newPosts: IPost[] = [...posts];
-  newPosts.splice(posts[index].isFavourite ? posts.length - 1 : 0, 0, {
+  newPosts.splice(posts[index]?.isFavourite ? posts.length - 1 : 0, 0, {
     ...newPosts.splice(index, 1)[0],
-    isFavourite: !posts[index].isFavourite
+    isFavourite: !posts[index]?.isFavourite
   });
   return newPosts;
 };
 
-export const handleSelectPost = (posts: IPost[], index: number, isSelected: boolean) => {
+export const handleSelectPost = (posts: IPost[], index: number, isSelected: boolean): IPost[] => {
   const newPosts: IPost[] = [...posts];
   newPosts.splice(index, 0, { ...newPosts.splice(index, 1)[0], isSelected: !isSelected });
   return newPosts;
+};
+
+export const handleFilterDeletedPosts = (posts: IPost[], deletedPosts: IPost[]): IPost[] => {
+  return _.difference(posts, deletedPosts);
 };

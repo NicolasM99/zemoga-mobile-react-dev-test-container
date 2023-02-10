@@ -14,7 +14,8 @@ const NoInternetBar: FC = () => {
     return (
       <View style={noInternetBarStyles.container}>
         <Header variant="h3" bold={false} style={noInternetBarStyles.message}>
-          No internet access. You're seeing old data
+          No internet access. You're seeing either old posts or no author/comments information and
+          you can't perform update or delete actions.
         </Header>
       </View>
     );

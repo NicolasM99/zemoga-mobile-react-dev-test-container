@@ -3,4 +3,5 @@ export interface IPostStore {
   id: number;
   title: string;
   body: string;
+  isFavourite?: boolean;
 }

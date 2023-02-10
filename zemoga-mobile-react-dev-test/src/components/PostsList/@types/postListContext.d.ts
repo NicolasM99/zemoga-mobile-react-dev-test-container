@@ -19,7 +19,7 @@ export type PostsListContextType = {
   setIsDeletingItems: (currentValue: boolean) => boolean | void;
   postsToDelete: IPost[] | [];
   setPostsToDelete: (currentPosts: IPost[]) => IPost[] | void;
-  isLoading: boolean;
+  isLoading?: boolean;
   setIsLoading: (currentValue: boolean) => boolean | void;
 };
 
